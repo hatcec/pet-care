@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private  String fistName;
+    private  String firstName;
     private  String lastName;
     private  String gender;
     @Column(name="mobile")
@@ -26,4 +26,7 @@ public class User {
     private  String password;
     private  String userType;
     private  boolean isEnabled;
+
+    @Transient
+    private  String specialization;
 }
