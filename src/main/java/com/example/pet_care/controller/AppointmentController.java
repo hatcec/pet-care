@@ -3,6 +3,7 @@ package com.example.pet_care.controller;
 import com.example.pet_care.entities.Appointment;
 import com.example.pet_care.exception.ResourceNotFoundException;
 import com.example.pet_care.request.AppointmentUpdateRequest;
+import com.example.pet_care.request.BookAppointmentRequest;
 import com.example.pet_care.response.ApiResponse;
 import com.example.pet_care.service.appointment.AppointmentService;
 import com.example.pet_care.utils.FeedBackMessage;
@@ -33,7 +34,7 @@ public class AppointmentController {
     }
 
     @PostMapping(UrlMapping.BOOK_APPOINTMENT)
-    public ResponseEntity<ApiResponse> bookAppointment(@RequestBody Appointment appointment,
+    public ResponseEntity<ApiResponse> bookAppointment(@RequestBody BookAppointmentRequest appointment,
     @RequestParam Long senderId, @RequestParam Long recipientId ){
         try{
             Appointment theAppointment=appointmentService.createAppointment(appointment, senderId, recipientId);
@@ -69,7 +70,7 @@ public class AppointmentController {
     @DeleteMapping(UrlMapping.DELETE_APPOINTMENT)
     public ResponseEntity<ApiResponse> deleteAppointmentById(@PathVariable Long id){
         try {
-            appointmentService.getAppointmentById(id);
+            appointmentService.deleteAppointment(id);
             return ResponseEntity.ok(new ApiResponse(FeedBackMessage.DELETE_SUCCESS, null));
         }catch (ResourceNotFoundException e){
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));

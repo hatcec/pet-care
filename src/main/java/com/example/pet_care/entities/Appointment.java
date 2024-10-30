@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -43,6 +44,9 @@ public class Appointment {
     @JoinColumn(name="recipient")
     @ManyToOne(fetch = FetchType.LAZY)
     private  User veterinarian;
+
+    @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL)
+    List<Pet> petList=new ArrayList<>();
 
     //randevu listesini kontrol edip boşsa randevu oluşturulacak.
     public void addPatient(User sender){

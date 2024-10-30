@@ -13,7 +13,7 @@ public class UrlMapping {
     /*---------------------------*/
 
 
-    public static final String APPOINTMENT = "/appointments";
+    public static final String APPOINTMENT =API+ "/appointments";
     public static final String GET_ALL_APPOINTMENT = "/all";
     public static final String BOOK_APPOINTMENT = "/book-appointment";
     public static final String GET_APPOINTMENT_BY_ID ="/appointment/{id}" ;
@@ -22,5 +22,11 @@ public class UrlMapping {
     public static final String UPDATE_APPOINTMENT = "/appointment/{id}/update";
 
 
+
     /*------------------------*/
+    public static final String PETS =API+ "/pets";
+    public static final String SAVE_PETS_APPOINTMENT = "/save-pet-appointment";
+    public static final String GET_PET_BY_ID ="/getPetById/{id}" ;
+    public static final String DELETE_PET_BY_ID = "/deletePetById/{id}";
+    public static final String UPDATE_PET = "/update/id";
 }
